@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+<<<<<<< HEAD
 from django.urls import path
 from TeamAdmin.views import signup_view
 
@@ -22,4 +23,13 @@ from TeamAdmin.views import signup_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('sing_up/', signup_view, name= "singup")
+=======
+from django.urls import path, include
+
+urlpatterns = [
+    path('', admin.site.urls),
+    path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
+    path('jet/', include('jet.urls'))
+
+>>>>>>> 4ac133a937db200ec678a10973b03598fa08501d
 ]
