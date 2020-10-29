@@ -3,8 +3,8 @@ from django.contrib.auth import login, authenticate
 from .forms import SignUpForm
 from django.shortcuts import render, redirect
 
-def home_view(request):
-    return render(request, 'home.html')
+#def home_view(request):
+#    return render(request, 'home.html')
 
 def signup_view(request):
     form = SignUpForm(request.POST)

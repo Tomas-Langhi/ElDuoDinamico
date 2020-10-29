@@ -18,6 +18,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('', admin.site.urls),
-    path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
-    path('jet/', include('jet.urls'))
+    path('jet/', include('jet.urls')),
+    path('signup/', signup_view, name="signup"),
 ]
