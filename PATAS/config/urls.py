@@ -15,10 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from TeamAdmin.views import signup_view
+
 urlpatterns = [
     path('', admin.site.urls),
     path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
-    path('jet/', include('jet.urls')),
-    path('signup/', signup_view, name="signup"),
+    path('jet/', include('jet.urls'))
 ]
