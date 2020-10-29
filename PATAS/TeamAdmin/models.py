@@ -1,3 +1,4 @@
+# -- coding: utf-8 --
 from django.db import models
 
 # Create your models here.
@@ -18,7 +19,6 @@ class Deporte(models.Model):
 
 class Entrenador(models.Model):
     usuario = models.CharField(max_length=20, default="")
-    contraseña = models.CharField(max_length=20, default="")
     nombre = models.CharField(max_length=20, default="")
     apellido = models.CharField(max_length=20, default="")
     dni = models.CharField(max_length=20, default="")
@@ -30,7 +30,6 @@ class Entrenador(models.Model):
 
 class Jugador(models.Model):
     usuario = models.CharField(max_length=20, default="")
-    contraseña = models.CharField(max_length=20, default="")
     nombre = models.CharField(max_length=20, default="")
     apellido = models.CharField(max_length=20, default="")
     dni = models.CharField(max_length=20, default="")
