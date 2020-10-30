@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from .forms import SignUpForm
 from django.contrib.auth import login, authenticate
 
+def home(request):
+    return render(request, 'TeamAdmin/home.html')
 
 def signup_view(request):
     form = SignUpForm(request.POST)
@@ -19,4 +21,4 @@ def signup_view(request):
         return redirect('home')
     else:
         form = SignUpForm()
-    return render(request, "signup_view.html", {'form': form})
+    return render(request, "TeamAdmin/signup_view.html", {'form': form})
