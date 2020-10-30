@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('', admin.site.urls),
-    path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
-    path('jet/', include('jet.urls'))
+    path('admin', admin.site.urls),
+    path('jet/', include('jet.urls')),
+    path('', include('TeamAdmin.urls')),
 ]
