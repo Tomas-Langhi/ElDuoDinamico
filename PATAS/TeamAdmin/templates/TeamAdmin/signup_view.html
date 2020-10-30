@@ -1,26 +1,93 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Inicio de sesion</title>
+
+    {% load static %}
+
+    <!-- Bootstrap -->
+    <link href="{%static 'TeamAdmin/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+     <!-- Fonts -->
+
+     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+
+
+    <!-- Style -->
+    <link href="{%static 'TeamAdmin/css/style.css' %}" rel="stylesheet">
+
 </head>
 <body>
-    <h2>Registrarse</h2>
+    <h1 class="site-heading text-center text-white d-none d-lg-block">
+
+        <span class="site-heading-lower">Iniciar Sesion</span>
+      </h1>
+
+
+    <!-- Barra de navegacion -->
+    <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="">Inicio</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item active px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="/">Inicio</a>
+          </li>
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="">Servicios</a>
+          </li>
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="">Contacto</a>
+          </li>
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="/signup">Iniciar sesion</a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+    <!-- Formulario -->
+    <!-- Cento de pagina -->
     <form method="post">
-      {% csrf_token %}
-      {% for field in form %}
-        <p>
-          {{ field.label_tag }}<br>
-          {{ field }}
-          {% if field.help_text %}
-            <small style="color: grey">{{ field.help_text }}</small>
-          {% endif %}
-          {% for error in field.errors %}
-            <p style="color: red">{{ error }}</p>
-          {% endfor %}
-        </p>
-      {% endfor %}
-      <button type="submit">Sign up</button>
+        <div class="container">
+            <div class="page-section clearfix">
+                <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+                    {% csrf_token %}
+                    {% for field in form %}
+                    <p>
+                      {{ field.label_tag }}<br>
+                      {{ field }}
+                      {% for error in field.errors %}
+                        <p style="color: red">{{ error }}</p>
+                      {% endfor %}
+                    </p>
+                    {% endfor %}
+                    <button type="submit">Enviar</button>
+                </div>
+            </div>
+        </div>
     </form>
+
+    <!-- Pie de pagina -->
+    <footer class="footer text-faded text-center py-5">
+      <div class="container">
+        <p class="m-0 mbt">
+            <a href="sample.html" class="link">Política de privacidad</a> ·
+            <a href="sample.html" class="link">Aviso legal</a> ·
+            <a href="sample.html" class="link">Cookies</a>
+        </p>
+        <p class="m-0 mbt1">&copy; Gestión Deportiva 2020</p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap -->
+    <script src="{%static 'TeamAdmin/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{%static 'TeamAdmin/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
 </body>
 </html>
