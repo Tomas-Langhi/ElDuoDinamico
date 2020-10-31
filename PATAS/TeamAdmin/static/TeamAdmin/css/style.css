@@ -6,12 +6,7 @@ body {
   background-size: cover;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1,h2,h3,h4,h5,h6 {
   font-family: 'Raleway';
 }
 
@@ -76,11 +71,11 @@ p {
 }
 
 .bg-faded {
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(86, 120, 116, 0.8);
 }
 
 #mainNav {
-  background-color: rgb(86, 120, 116, 0.8);
+  background-color: rgba(86, 120, 116, 0.8);
   font-family: 'Raleway';
 }
 
@@ -131,7 +126,7 @@ p {
     float: left;
   }
   .intro .intro-text {
-    left: 600;
+    left: 60%;
     width: 60%;
     margin-top: 3rem;
     background-color: rgba(86, 120, 116, 0.8);
@@ -155,14 +150,14 @@ p {
 .cta {
   padding-top: 5rem;
   padding-bottom: 5rem;
-  background-color: rgb(242, 245, 240, 0.8);
+  background-color: rgba(242, 245, 240, 0.8);
 }
 
 .cta .cta-inner {
   position: relative;
   padding: 3rem;
   margin: 0.5rem;
-  background-color: rgba(86, 120, 116);
+  background-color: rgba(86, 120, 116, 0.8);
   color: cornsilk;
 }
 

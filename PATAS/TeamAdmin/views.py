@@ -5,6 +5,12 @@ from django.contrib.auth import login, authenticate
 def home(request):
     return render(request, 'TeamAdmin/home.html')
 
+def servicio(request):
+    return render(request, 'TeamAdmin/servicios.html')
+
+def contacto(request):
+    return render(request, 'TeamAdmin/contacto.html')
+
 def signup_view(request):
     form = SignUpForm(request.POST)
     if form.is_valid():
