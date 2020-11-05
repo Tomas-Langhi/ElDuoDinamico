@@ -1,5 +1,6 @@
 # -- coding: utf-8 --
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -16,9 +17,8 @@ class Deporte(models.Model):
     def __str__(self):
         return self.nombre
 
-
 class Entrenador(models.Model):
-    usuario = models.CharField(max_length=20, default="")
+    usuario = models.ForeignKey(User, null = True, on_delete=models.CASCADE)
     nombre = models.CharField(max_length=20, default="")
     apellido = models.CharField(max_length=20, default="")
     dni = models.CharField(max_length=20, default="")
@@ -29,7 +29,7 @@ class Entrenador(models.Model):
 
 
 class Jugador(models.Model):
-    usuario = models.CharField(max_length=20, default="")
+    usuario = models.ForeignKey(User, null = True, on_delete=models.CASCADE)
     nombre = models.CharField(max_length=20, default="")
     apellido = models.CharField(max_length=20, default="")
     dni = models.CharField(max_length=20, default="")
@@ -69,6 +69,9 @@ class Partido(models.Model):
 class Entrenamiento(models.Model):
     descripcion = models.CharField(max_length=200, default="")
 
+    def __str__(self):
+        return "Entrenamiento " + str(self.descripcion)
+
 class Tipo(models.Model):
     partido = models.ForeignKey(Partido, on_delete=models.CASCADE)
     entrenamiento = models.ForeignKey(Entrenamiento, default=None, on_delete=models.CASCADE)
@@ -81,3 +84,5 @@ class Evento(models.Model):
     horaFin = models.TimeField() 
     asistencia = models.ForeignKey(Jugador, default=None, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return "Evento: " + str(self.nombre)
