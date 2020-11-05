@@ -21,18 +21,13 @@ class Deporte(models.Model):
 
 
 class Profile(models.Model):
-    created_by = models.ForeignKey(User, null = True, on_delete=models.CASCADE)
-    nombre = models.CharField(max_length=100, help_text='Nombre', default = "")
-    apellido = models.CharField(max_length=100, help_text='Apellido', default = "")
-    email = models.EmailField(max_length=150, help_text='Email', default = "")
-    rol = models.CharField(max_length=100, help_text='Apellido', default = "")
-
-
+    useuario = models.ForeignKey(User, null = True, on_delete=models.CASCADE)
+    
     def __str__(self):
         return self.nombre
 
 class Entrenador(models.Model):
-    usuario = models.CharField(max_length=20, default="")
+    useuario = models.ForeignKey(User, null = True, on_delete=models.CASCADE)
     nombre = models.CharField(max_length=20, default="")
     apellido = models.CharField(max_length=20, default="")
     dni = models.CharField(max_length=20, default="")
@@ -43,7 +38,7 @@ class Entrenador(models.Model):
 
 
 class Jugador(models.Model):
-    usuario = models.CharField(max_length=20, default="")
+    useuario = models.ForeignKey(User, null = True, on_delete=models.CASCADE)
     nombre = models.CharField(max_length=20, default="")
     apellido = models.CharField(max_length=20, default="")
     dni = models.CharField(max_length=20, default="")
