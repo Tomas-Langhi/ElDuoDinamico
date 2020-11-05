@@ -1,5 +1,6 @@
 # -- coding: utf-8 --
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -16,6 +17,19 @@ class Deporte(models.Model):
     def __str__(self):
         return self.nombre
 
+
+
+
+class Profile(models.Model):
+    created_by = models.ForeignKey(User, null = True, on_delete=models.CASCADE)
+    nombre = models.CharField(max_length=100, help_text='Nombre', default = "")
+    apellido = models.CharField(max_length=100, help_text='Apellido', default = "")
+    email = models.EmailField(max_length=150, help_text='Email', default = "")
+    rol = models.CharField(max_length=100, help_text='Apellido', default = "")
+
+
+    def __str__(self):
+        return self.nombre
 
 class Entrenador(models.Model):
     usuario = models.CharField(max_length=20, default="")
