@@ -1,31 +1,38 @@
 from django.shortcuts import render, redirect
 from .forms import SignUpForm
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, get_user
+
 
 def home(request):
     return render(request, 'TeamAdmin/home.html')
 
+
 def servicio(request):
     return render(request, 'TeamAdmin/servicios.html')
+
 
 def contacto(request):
     return render(request, 'TeamAdmin/contacto.html')
 
+def sign_in_view(request):
+    return render(request, 'registration/login.html')
+
 def signup_view(request):
-    form = SignUpForm(request.POST)
-    if form.is_valid():
-        user = form.save()
-        user.refresh_from_db()
-        user.profile.nombre = form.cleaned_data.get('nombre')
-        user.profile.apellido = form.cleaned_data.get('apellido')
-        user.profile.email = form.cleaned_data.get('email')
-        user.porfile.rol = form.cleaned_data.get('rol')
-        user.save()
-        username = form.cleaned_data.get('username')
-        password = form.cleaned_data.get('password1')
-        user = authenticate(username=username, password=password)
-        login(request, user)
-        return redirect('/')
+    data = {
+        'form': SignUpForm()
+    }
+
+    if request.method == 'POST':
+        formulario = SignUpForm(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+
+            # inicia sesion y redirige al inicio
+            username = formulario.cleaned_data.get('username')
+            password = formulario.cleaned_data.get('password1')
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return redirect('/')
     else:
         form = SignUpForm()
-    return render(request, "TeamAdmin/signup_view.html", {'form': form})
+    return render(request, "registration/signup.html", data)

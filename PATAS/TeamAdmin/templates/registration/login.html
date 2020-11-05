@@ -1,0 +1,27 @@
+{% extends "TeamAdmin/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    <!-- Formulario -->
+    <!-- Cento de pagina -->
+    <form method="post">
+        <div class="container">
+            <div class="page-section clearfix">
+                <div class="intro-text left-0 text-center bg-faded p-5 rounded", style="background-color: rgba(86, 120, 116, 0.8)" >
+                    {% csrf_token %}
+                    <label>Nombre de Usuario</label>
+                    <input type="text" class="form-control" placeholder="Nombre de Usuario" name="username">
+
+                    <label>Contraseña</label>
+                    <input type="password" class="form-control" placeholder="Contraseña" name="password">
+                    <br>
+                    <button type="submit">Iniciar Sesion</button>
+                    <a class="nav-link text-uppercase" href="/signUp" style="color: white">Registrarse</a>
+                </div>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}
