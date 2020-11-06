@@ -1,7 +1,7 @@
 # -- coding: utf-8 --
 from django.db import models
 from django.contrib.auth.models import User
-
+#from users.models import User
 # Create your models here.
 
 class Posicion(models.Model):
@@ -18,7 +18,7 @@ class Deporte(models.Model):
         return self.nombre
 
 class Entrenador(models.Model):
-    usuario = models.ForeignKey(User, null = True, on_delete=models.CASCADE)
+    #usuario = models.ForeignKey(User, null = True, on_delete=models.CASCADE)
     nombre = models.CharField(max_length=20, default="")
     apellido = models.CharField(max_length=20, default="")
     dni = models.CharField(max_length=20, default="")
@@ -29,7 +29,7 @@ class Entrenador(models.Model):
 
 
 class Jugador(models.Model):
-    usuario = models.ForeignKey(User, null = True, on_delete=models.CASCADE)
+    #usuario = models.ForeignKey(User, null = True, on_delete=models.CASCADE)
     nombre = models.CharField(max_length=20, default="")
     apellido = models.CharField(max_length=20, default="")
     dni = models.CharField(max_length=20, default="")

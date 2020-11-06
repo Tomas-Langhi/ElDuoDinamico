@@ -8,9 +8,8 @@ options = [
 ]
 
 class SignUpForm(UserCreationForm):
-
     email = forms.EmailField(max_length=150, help_text='Email')
-    rol = forms.ChoiceField(required=True, widget = forms.Select, choices= options,)
+    rol = forms.ChoiceField(required=True, widget = forms.Select, choices= options, help_text='rol')
 
     class Meta:
         model = User

@@ -25,7 +25,8 @@ def signup_view(request):
     if request.method == 'POST':
         formulario = SignUpForm(request.POST)
         if formulario.is_valid():
-            formulario.save()
+            user = formulario.save()
+            user.save()
 
             # inicia sesion y redirige al inicio
             username = formulario.cleaned_data.get('username')
@@ -35,4 +36,4 @@ def signup_view(request):
             return redirect('/')
     else:
         form = SignUpForm()
-    return render(request, "registration/signup.html", data)
+    return render(request, "registration/register.html", data)
