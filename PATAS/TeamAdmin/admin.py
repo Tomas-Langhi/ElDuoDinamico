@@ -21,8 +21,4 @@ admin.site.register(Punto, )
 admin.site.register(Partido, )
 admin.site.register(Entrenamiento, )
 admin.site.register(Tipo, )
-<<<<<<< HEAD
-admin.site.register(Evento, ) 
-=======
 admin.site.register(Evento, )
->>>>>>> 3d8244905c494fdc8f9b9df9bed87ba52b17a72e

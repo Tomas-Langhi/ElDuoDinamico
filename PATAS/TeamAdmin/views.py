@@ -18,11 +18,8 @@ def servicio(request):
 def contacto(request):
     return render(request, 'TeamAdmin/contacto.html')
 
-<<<<<<< HEAD
-=======
 def sign_in_view(request):
     return render(request, 'registration/login.html')
->>>>>>> 3d8244905c494fdc8f9b9df9bed87ba52b17a72e
 
 def signup_view(request):
     data = {
