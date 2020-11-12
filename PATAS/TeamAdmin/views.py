@@ -13,10 +13,6 @@ def contacto(request):
     return render(request, 'TeamAdmin/contacto.html')
 
 
-
-
-    
-
 def signup_view(request):
     form = SignUpForm(request.POST)
     if form.is_valid():

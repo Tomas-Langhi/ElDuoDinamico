@@ -19,6 +19,7 @@ class Deporte(models.Model):
 
 
 
+
 class Entrenador(models.Model):
     usuario = models.ForeignKey(User, null = True, on_delete=models.CASCADE)
     nombre = models.CharField(max_length=20, default="")

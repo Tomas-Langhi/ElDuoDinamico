@@ -8,8 +8,6 @@ options = [
 ]
 
 class SignUpForm(UserCreationForm):
-    nombre = forms.CharField(max_length=100, help_text='Nombre')
-    apellido = forms.CharField(max_length=100, help_text='Apellido')
     email = forms.EmailField(max_length=150, help_text='Email')
     rol = forms.ChoiceField(required=True, widget = forms.Select, choices= options,)
 
