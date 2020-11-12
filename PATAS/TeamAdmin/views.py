@@ -14,10 +14,10 @@ def servicio(request):
 def contacto(request):
     return render(request, 'TeamAdmin/contacto.html')
 
-def sign_in_view(request):
-    return render(request, 'registration/login.html')
+def login(request):
+    return render(request, 'TeamAdmin/login.html')
 
-def signup_view(request):
+def register(request):
     data = {
         'form': SignUpForm()
     }
@@ -36,4 +36,4 @@ def signup_view(request):
             return redirect('/')
     else:
         form = SignUpForm()
-    return render(request, "registration/register.html", data)
+    return render(request, "TeamAdmin/register.html", data)
