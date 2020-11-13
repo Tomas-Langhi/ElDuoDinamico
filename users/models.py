@@ -16,7 +16,7 @@ def update_last_login(sender, user, **kwargs):
     user.save(update_fields=['last_login'])
 
 
-class CustomUserManager(BaseUserManager, models.Manager):
+class UserManager(BaseUserManager, models.Manager):
     use_in_migrations = True
 
     def _create_user(self, username, email, password, **extra_fields):
@@ -51,7 +51,7 @@ class CustomUserManager(BaseUserManager, models.Manager):
         return self._create_user(username, email, password, **extra_fields)
 
 
-class CustomAbstractUser(AbstractBaseUser, PermissionsMixin):
+class AbstractUser(AbstractBaseUser, PermissionsMixin):
     """
     An abstract base class implementing a fully featured User model with
     admin-compliant permissions.
@@ -95,11 +95,11 @@ class CustomAbstractUser(AbstractBaseUser, PermissionsMixin):
     )
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
 
-    objects = CustomUserManager()
+    objects = UserManager()
 
     EMAIL_FIELD = 'email'
     USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['email']
+    REQUIRED_FIELDS = ['email', 'rol']
 
     class Meta:
         verbose_name = _('user')
@@ -126,13 +126,13 @@ class CustomAbstractUser(AbstractBaseUser, PermissionsMixin):
         return self.rol
 
 
-class CustomUser(CustomAbstractUser):
+class User(AbstractUser):
     """
     Users within the Django authentication system are represented by this
     model.
 
     Username and password are required. Other fields are optional.
     """
-    class Meta(CustomAbstractUser.Meta):
+    class Meta(AbstractUser.Meta):
         swappable = 'AUTH_USER_MODEL'
-
+    

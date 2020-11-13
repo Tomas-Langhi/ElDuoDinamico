@@ -2,11 +2,15 @@
 from django.contrib import admin
 from TeamAdmin.models import *
 
+
 class PartidoInline(admin.TabularInline):
     model = Partido
 
 class PuntoAdmin(admin.ModelAdmin):
     inlines = [PartidoInline, ]
+
+
+
 
 
 # Register your models here.
