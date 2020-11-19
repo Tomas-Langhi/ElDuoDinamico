@@ -7,14 +7,6 @@ from django.contrib.auth.validators import ASCIIUsernameValidator, UnicodeUserna
 
 from django.utils import timezone
 
-def update_last_login(sender, user, **kwargs):
-    """
-    A signal receiver which updates the last_login date for
-    the user logging in.
-    """
-    user.last_login = timezone.now()
-    user.save(update_fields=['last_login'])
-
 
 class UserManager(BaseUserManager, models.Manager):
     use_in_migrations = True
@@ -22,6 +14,7 @@ class UserManager(BaseUserManager, models.Manager):
     def _create_user(self, username, email, password, **extra_fields):
         """
         Create and save a user with the given username, email, and password.
+        le agregamos el rol
         """
         if not username:
             raise ValueError('The given username must be set')
