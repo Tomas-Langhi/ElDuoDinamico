@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from users.models import User
+from users.models import CustomUser
 
 
 options = [
@@ -13,6 +13,6 @@ class SignUpForm(UserCreationForm):
     rol = forms.ChoiceField(required=True, widget = forms.Select, choices= options, help_text='rol')
 
     class Meta:
-        model = User
+        model = CustomUser
         fields = ('username', 'first_name', 'last_name',
                   'email', 'rol', 'password1', 'password2',)
