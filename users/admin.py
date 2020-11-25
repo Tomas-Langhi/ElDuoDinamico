@@ -1,7 +1,6 @@
 from django.contrib import admin
 from users.models import *
-from django.utils.translation import gettext, gettext_lazy as _
-from django.urls import path
+from django.utils.translation import gettext_lazy as _
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
@@ -9,7 +8,7 @@ class UserAdmin(admin.ModelAdmin):
     change_user_password_template = None
     fieldsets = (
         (None, {'fields': ('username', 'password')}),
-        (_('Personal info'), {'fields': ('first_name', 'last_name', 'email', 'rol')}),
+        (_('Personal info'), {'fields': ('first_name', 'last_name', 'email',)}),
         (_('Permissions'), {
             'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions'),
         }),
@@ -25,12 +24,11 @@ class UserAdmin(admin.ModelAdmin):
     #form = UserChangeForm  (no creamos un formulario para cambiar el usuario)
     #add_form = UserCreationForm
     #change_password_form = AdminPasswordChangeForm
-    list_display = ('username', 'email', 'rol', 'first_name', 'last_name', 'is_staff')
+    list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff')
     list_filter = ('is_staff', 'is_superuser', 'is_active',)
-    search_fields = ('username', 'first_name', 'last_name', 'email', 'rol')
+    search_fields = ('username', 'first_name', 'last_name', 'email',)
     ordering = ('username',)
     filter_horizontal = ('user_permissions',)
-
 
     def get_fieldsets(self, request, obj=None):
         if not obj:
@@ -46,18 +44,4 @@ class UserAdmin(admin.ModelAdmin):
             defaults['form'] = self.add_form
         defaults.update(kwargs)
         return super().get_form(request, obj, **defaults)
-
-
-    """def get_urls(self):
-        return [
-            path(
-                '<id>/password/',
-                self.admin_site.admin_view(self.user_change_password),
-                name='auth_user_password_change',
-            ),
-        ] + super().get_urls()
-
-    def lookup_allowed(self, lookup, value):
-        # Don't allow lookups involving passwords.
-        return not lookup.startswith('password') and super().lookup_allowed(lookup, value)"""
 
