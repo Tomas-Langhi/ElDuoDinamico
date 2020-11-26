@@ -1,7 +1,6 @@
 # -- coding: utf-8 --
 from django.db import models
-from django.contrib.auth.models import User
-#from users.models import User
+from users.models import CustomUser
 # Create your models here.
 
 class Posicion(models.Model):
@@ -18,7 +17,7 @@ class Deporte(models.Model):
         return self.nombre
 
 class Entrenador(models.Model):
-    #usuario = models.ForeignKey(User, null = True, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(CustomUser, null = True, on_delete=models.CASCADE)
     nombre = models.CharField(max_length=20, default="")
     apellido = models.CharField(max_length=20, default="")
     dni = models.CharField(max_length=20, default="")
@@ -29,7 +28,7 @@ class Entrenador(models.Model):
 
 
 class Jugador(models.Model):
-    #usuario = models.ForeignKey(User, null = True, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(CustomUser, null = True, on_delete=models.CASCADE)
     nombre = models.CharField(max_length=20, default="")
     apellido = models.CharField(max_length=20, default="")
     dni = models.CharField(max_length=20, default="")
@@ -57,6 +56,8 @@ class Punto(models.Model):
     def __str__(self):
         return str(self.jugador) + ", " + str(self.valor)
 
+
+"""
 class Partido(models.Model):
     contrincante = models.CharField(max_length=20, default="")
     punto = models.ManyToManyField(Punto)
@@ -73,16 +74,32 @@ class Entrenamiento(models.Model):
         return "Entrenamiento " + str(self.descripcion)
 
 class Tipo(models.Model):
-    partido = models.ForeignKey(Partido, on_delete=models.CASCADE)
-    entrenamiento = models.ForeignKey(Entrenamiento, default=None, on_delete=models.CASCADE)
+    partido = models.ForeignKey(Partido, on_delete=models.CASCADE, blank=True)
+    entrenamiento = models.ForeignKey(Entrenamiento, default=None, on_delete=models.CASCADE, blank=True)
+
+    def __str__(self):
+        return "Evento: " + str(self.partido) + str(self.entrenamiento)
+"""
+options = [
+        ('e', 'Entrenamiento'),
+        ('p', 'Partido'),
+        ('r', 'Reunion de equipo')
+    ]
 
 class Evento(models.Model):
     nombre = models.CharField(max_length=20, default="")
-    tipo = models.ForeignKey(Tipo, default=None, on_delete=models.CASCADE)
+    tipo = models.CharField(max_length=15, choices = options, default = 'e')
     fecha = models.DateField()
     horaInicio = models.TimeField()
     horaFin = models.TimeField() 
-    asistencia = models.ForeignKey(Jugador, default=None, on_delete=models.CASCADE)
+    asistencia = models.ManyToManyField(Jugador, default=None)
+    descripcion = models.CharField(max_length=200, default="", blank=True)
+
+    # Caracteristicas del partido
+    contrincante = models.CharField(max_length=20, default="", blank=True)
+    punto = models.ForeignKey(Punto, blank=True, null=True, on_delete=models.CASCADE)
+    puntoContrincante = models.IntegerField(default = 0, blank=True)
+    puntoEquipo = models.IntegerField(default = None, blank=True)
 
     def __str__(self):
         return "Evento: " + str(self.nombre)

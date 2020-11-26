@@ -31,7 +31,7 @@ def register(request):
             username = formulario.cleaned_data.get('username')
             password = formulario.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
-            login(request, user)
+            login(user)
             return redirect('/')
     else:
         form = SignUpForm()

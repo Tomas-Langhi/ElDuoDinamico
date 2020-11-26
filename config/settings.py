@@ -120,7 +120,7 @@ USE_TZ = True
 AUTH_USER_MODEL = 'users.CustomUser'
 
 # Redirects a pagina de inicio
-LOGIN_REDIRECT_URL = '/admin'
+LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 # Static files (CSS, JavaScript, Images)
