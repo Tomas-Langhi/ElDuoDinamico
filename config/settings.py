@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'TeamAdmin',
-    'users',
 ]
 
 MIDDLEWARE = [
@@ -117,7 +116,6 @@ USE_L10N = True
 USE_TZ = True
 
 
-AUTH_USER_MODEL = 'users.CustomUser'
 
 # Redirects a pagina de inicio
 LOGIN_REDIRECT_URL = '/'

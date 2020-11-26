@@ -1,1 +1,9 @@
 .idea/
+.vscode/
+TemaAdmin/migratios/
+TemaAdmin/__pycache__/
+users/migratios/
+users/__pycache__/
+__init__.py
+user/__init__.py
+TemaAdmin/__init__.py
