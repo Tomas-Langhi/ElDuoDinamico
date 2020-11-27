@@ -63,7 +63,6 @@ class Punto(models.Model):
         return str(self.jugador) + ", " + str(self.valor)
 
 
-
 options = [
         ('e', 'Entrenamiento'),
         ('p', 'Partido'),
