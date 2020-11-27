@@ -13,8 +13,11 @@ def servicio(request):
     return render(request, 'TeamAdmin/servicios.html')
 
 
-def contacto(request):
-    return render(request, 'TeamAdmin/contacto.html')
+def quienesSomos(request):
+    return render(request, 'TeamAdmin/quienesSomos.html')
+
+def virus(request):
+    return render(request, 'TeamAdmin/virus.html')
 
 
 """

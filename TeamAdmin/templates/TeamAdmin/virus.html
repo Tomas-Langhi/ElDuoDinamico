@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Fuiste hackeado puto</title>
+    </head>
+    <body id="bod">
+        <center>
+            <div style="padding-top: 200px;">
+                <h1 id="fafa"; style="font-size: 100px;">Fuiste hackeado puto</h1>
+                <p>No me deja poner la musiquita pero la intencion es lo que cuenta</p>
+            </div>
+            <audio  autoplay="autoplay" loop>
+                <source src="hastalaprox.mp3" type="audio/mpeg" >
+            </audio>
+        </center>
+
+        <script>
+
+            delayInMilliseconds = 150; //1 second
+            var ela = document.getElementById("fafa");
+
+            function maquina(bandera, txt){
+
+                    setTimeout(function() {
+                    //your code to be executed after 1 second
+                        if (bandera){
+                            txt.innerText = "Fuiste hackeado puto";
+                            txt.style.color = "red";
+                            document.getElementById("bod").style.backgroundColor = "blue";
+
+                        }else{
+                            txt.innerText = "DOU";
+                            txt.style.color = "blue";
+                            document.getElementById("bod").style.backgroundColor = "red";
+                        }
+                        bandera = !bandera;
+                        return maquina(bandera, txt);
+                    }, delayInMilliseconds, bandera, txt);
+            }
+            maquina(true, ela);
+
+        </script>
+   </body>
+</html>

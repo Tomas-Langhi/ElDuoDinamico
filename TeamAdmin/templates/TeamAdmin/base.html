@@ -35,15 +35,27 @@
           <li class="nav-item {% if request.path == '/' %}active{% endif %} px-lg-4">
             <a class="nav-link text-uppercase text-expanded" href="/">Inicio</a>
           </li>
+          {% if user.is_authenticated %}
           <li class="nav-item {% if request.path == '/servicios/' %}active{% endif %} px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="/servicios">Servicios</a>
+            <a class="nav-link text-uppercase text-expanded" href="/admin/TeamAdmin/evento">Servicios</a>
           </li>
-          <li class="nav-item {% if request.path == '/contacto/' %}active{% endif %} px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="/contacto">Contacto</a>
+          {% endif %}
+          <li class="nav-item {% if request.path == '/quienesSomos/' %}active{% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="/quienesSomos">Quienes Somos</a>
           </li>
+          {% if user.is_authenticated == False %}
           <li class="nav-item {% if request.path == '/accounts/login/' %}active{% endif %} px-lg-4">
             <a class="nav-link text-uppercase text-expanded" href="/accounts/login">Iniciar sesion</a>
           </li>
+          {% endif %}
+          {% if user.is_authenticated %}
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="/">Usuario : {{ user.username }}</a>
+          </li>
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="/accounts/logout">Cerrar Sesion</a>
+          </li>
+          {% endif %}
 
         </ul>
       </div>
@@ -60,9 +72,9 @@
     <footer class="footer text-faded text-center py-5">
       <div class="container">
         <p class="m-0 mbt">
-            <a href="sample.html" class="link">Política de privacidad</a> ·
-            <a href="sample.html" class="link">Aviso legal</a> ·
-            <a href="sample.html" class="link">Cookies</a>
+            <a href="/virus" class="link">Política de privacidad</a> ·
+            <a href="/virus" class="link">Aviso legal</a> ·
+            <a href="/virus" class="link">Cookies</a>
         </p>
         <p class="m-0 mbt1">&copy; Gestión Deportiva 2020</p>
       </div>
