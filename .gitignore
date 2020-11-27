@@ -70,4 +70,9 @@ target/
 .vscode/
 /.vscode/launch.json
 /logs/
+<<<<<<< HEAD
 .idea
+=======
+.idea
+
+>>>>>>> fa94b601ab79ac88838ffcece53591f669235ab3
