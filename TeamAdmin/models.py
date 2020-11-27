@@ -18,6 +18,7 @@ class Deporte(models.Model):
         return self.nombre
 
 class Entrenador(models.Model):
+    usuario = models.OneToOneField(User, null = True, on_delete=models.CASCADE)
     #nombre_usuario = models.CharField(max_length=20, default="", help_text="Ingrese su nombre de usuario")
     nombre = models.CharField(max_length=20, default="")
     apellido = models.CharField(max_length=20, default="")
