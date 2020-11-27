@@ -1,8 +1,9 @@
 <p align="center">
-  <img alt="Logo" src="https://imgur.com/c4puUcy" width="150">
+  <img alt="Logo" src="https://imgur.com/c4puUcy.png" width="100" height="100">
   <br />
   <br />
-# PATASport
+
+## PATASport
 
 _PATASport es una aplicaion que tiene el objetivo de permitir a un equipo que se pueda organizar frente a diferentes 
 eventos y actividades para facilitar el trabajo de las personas que se encargan de organizarlas y ayudando a crecer 
