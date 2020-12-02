@@ -8,10 +8,10 @@ from django.contrib.auth.forms import UserCreationForm
 def home(request):
     return render(request, 'TeamAdmin/home.html')
 
-
+""""
 def servicio(request):
-    return render(request, 'TeamAdmin/servicios.html')
-
+    return render(request, 'admin/index.html')
+"""
 
 def quienesSomos(request):
     return render(request, 'TeamAdmin/quienesSomos.html')
@@ -20,10 +20,8 @@ def virus(request):
     return render(request, 'TeamAdmin/virus.html')
 
 
-"""
 def login(request):
     return render(request, 'registration/login.html')
-"""
 
 
 def register(request):
