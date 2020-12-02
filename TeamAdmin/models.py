@@ -27,6 +27,9 @@ class Entrenador(models.Model):
     dni = models.CharField(max_length=20, default="")
     telefono = models.CharField(max_length=20, default="")
     
+    class Meta:
+        permissions = (("puede_ver_admin",),)
+    
     """
     @classmethod
     def guardar_jugador(self):
