@@ -20,10 +20,6 @@ def virus(request):
     return render(request, 'TeamAdmin/virus.html')
 
 
-def login(request):
-    return render(request, 'registration/login.html')
-
-
 def register(request):
     print("entreo 1")
 
@@ -64,4 +60,4 @@ def register(request):
 
     return render(request, "TeamAdmin/register.html", data)
 
-
+# unacontra123

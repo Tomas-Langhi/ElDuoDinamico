@@ -27,20 +27,7 @@ class Entrenador(models.Model):
     dni = models.CharField(max_length=20, default="")
     telefono = models.CharField(max_length=20, default="")
     
-    class Meta:
-        permissions = (("puede_ver_admin",),)
     
-    """
-    @classmethod
-    def guardar_jugador(self):
-        print("entra aca PERO NO FUNCIONA")
-        user = User.objects.create_user(self.nombre_usuario, self.mail, self.contraseña)
-        user.first_name = self.nombre
-        user.last_name = slef.apellido
-        user.save()
-        return user
-    """
-
     def __str__(self):
         return self.nombre
 
@@ -52,7 +39,7 @@ class Jugador(models.Model):
     dni = models.CharField(max_length=20, default="")
     telefono = models.CharField(max_length=20, default="")
     deporte = models.ForeignKey(Deporte, on_delete=models.CASCADE)
-    posicion = models.ForeignKey(Posicion, default=None, on_delete=models.CASCADE)
+    posicion = models.ManyToManyField(Posicion, default=None)
 
     def __str__(self):
         return self.nombre
@@ -84,7 +71,7 @@ class Evento(models.Model):
 
     # Caracteristicas del partido
     contrincante = models.CharField(max_length=20, default="", blank=True, null = True)
-    punto = models.ForeignKey(Punto, blank=True, null=True, on_delete=models.CASCADE)
+    punto = models.ManyToManyField(Punto, blank=True, null=True)
     puntoContrincante = models.IntegerField(default = 0, blank=True, null = True)
     puntoEquipo = models.IntegerField(default = None, blank=True, null = True)
 
